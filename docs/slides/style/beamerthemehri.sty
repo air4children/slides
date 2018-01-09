@@ -104,6 +104,10 @@
 \definecolor{hriSec3Dark}{rgb}{0.338345865,0.058823529,0.196078431}
 \definecolor{hriSec3Comp}{rgb}{1,0.509803922,0}
 \definecolor{hriSec3CompDark}{rgb}{0.666666667,0.333333333,0}
+\definecolor{hriSec3Blue}{rgb}{0.07, 0.04, 0.56} %wrongultramarine
+% \definecolor{hriSec3Blue}{rgb}{0.0, 1.0, 0.0} %{green(colorwheel)(x11green)}{rgb} % http://latexcolor.com/
+
+
 
 % General
 \setbeamercolor{normal text}{fg=hriWarmGreyDark}
@@ -115,6 +119,11 @@
 \setbeamercolor{palette secondary}{fg=hriWarmGreyDark,bg=hriWarmGreyLight}
 \setbeamercolor{palette tertiary}{fg=black,bg=hriWarmGreyLight}
 \setbeamercolor{palette quaternary}{fg=white, bg=hriWarmGreyDark}
+% \setbeamercolor{palette quaternary}{fg=white, bg=hriBlack}
+
+
+%
+
 % Titlepage
 \setbeamercolor{title}{parent=normal text}
 \setbeamercolor{subtitle}{parent=normal text}
@@ -425,6 +434,7 @@
 \pgfkeys{
     /background/.is family, /background,
     default/.style = {scale = 1.0,color=white,caption=\empty},
+    % default/.style = {scale = 1.0,color=hriBlack,caption=\empty},
     scale/.estore in = \bgScale,
     color/.estore in = \bgColor,
     caption/.estore in = \bgCaption,
@@ -452,7 +462,8 @@
     {
     \setbeamertemplate{background canvas}{
         \begin{tikzpicture}[remember picture, overlay,background
-            rectangle/.style={fill=\bgColor}, show background rectangle]
+            % rectangle/.style={fill=\bgColor}, show background rectangle]
+            rectangle/.style={fill=hriBlack}, show background rectangle]
             \useasboundingbox (current page.north east) rectangle (current page.south west);
 
             \node at (current page.center){\includegraphics[width=\bgScale\paperwidth,height=\bgScale\paperheight,keepaspectratio]{#2}};
@@ -465,7 +476,7 @@
         \ifdefequal{\bgCaption}{\empty}{%
         }{%
             \begin{tikzpicture}[remember picture,overlay]
-                \node at (-1, -4.5) [anchor=south west,shape=rectangle,fill=hriSec3Dark, opacity=0.7, align=right, text width=0.6\paperwidth]
+                \node at (-1, -4.5) [anchor=south west,shape=rectangle,fill=hriSec3Blue, opacity=0.8, align=left, text width=0.6\paperwidth]
                 {\usebeamerfont{subtitle}\usebeamercolor[bg]{subtitle}\bgCaption\par};
             \end{tikzpicture}
         }%
