@@ -10,6 +10,7 @@ TARGET=$(TEXTARGETS:.tex=.pdf)
 SVG=$(wildcard figs/*.svg)
 SVG+=$(wildcard figs/*/*.svg)
 JPG=$(wildcard figs/*.jpg)
+PNG=$(wildcard figs/*.png)
 
 MODE ?= batchmode
 
@@ -20,6 +21,9 @@ all: paper
 
 %.pdf: %.jpg
 	convert $(<) $(@)
+
+%.png: %.svg
+	inkscape --export-png $(@) $(<)
 
 %.aux: paper
 
@@ -35,7 +39,7 @@ bib: $(TARGET:.tex=.aux)
 	TEXINPUTS=:./style $(LATEX) --interaction=$(MODE) -shell-escape $<; if [ $$? -gt 0 ]; then echo "Error while compiling $<"; touch $<; fi
 
 # paper: $(SVG:.svg=.pdf) $(TARGET)
-paper: $(SVG:.svg=.pdf) $(JPG:.jpg=.pdf) $(TARGET)
+paper: $(SVG:.svg=.png) $(TARGET)
 
 touch:
 	touch $(TEXTARGETS)
@@ -43,7 +47,7 @@ touch:
 force: touch paper
 
 clean:
-	rm -f *.vrb *.spl *.idx *.aux *.log *.snm *.out *.toc *.nav *intermediate *~ *.glo *.ist *.bbl *.blg $(SVG:.svg=.pdf) $(JPG:.jpg=.pdf)
+	rm -f *.vrb *.spl *.idx *.aux *.log *.snm *.out *.toc *.nav *intermediate *~ *.glo *.ist *.bbl *.blg $(SVG:.svg=.png) $(JPG:.jpg=.pdf)
 	rm -rf _minted*
 
 
