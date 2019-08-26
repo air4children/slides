@@ -255,7 +255,9 @@
     \ifx\insertsubtitle\@empty%
     \else%
         % {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
-        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}  \href{https://twitter.com/LibrERobotics}{\faTwitter @LibrERobotics} \#DeepLearning }%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}  
+		%\href{https://twitter.com/LibrERobotics}{\faTwitter @LibrERobotics} \#DeepLearning 
+	}%
         \vspace*{5mm}
     \fi%
     % \ifx\insertdate\@empty%
@@ -268,9 +270,14 @@
     \ifx\insertauthor\@empty%
     \else%
         {\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par}%
-        {\usebeamerfont{author} \href{https://twitter.com/_mxochicale}{\faTwitter @\_mxochicale}
-                                \href{https://github.com/mxochicale}{\faGithub @mxochicale} \par}%
-        {\usebeamerfont{author} {\tt \href{http://mxochicale.github.io/}{http://mxochicale.github.io/ }  }  \par}%
+        {\usebeamerfont{author} \href{https://twitter.com/librerobotics}{\faTwitter @librerobotics}
+                                \href{https://github.com/librerobotics}{\faGithub @librerobotics} \par}%
+        {\usebeamerfont{author} 
+				{\tt \href{https://sites.google.com/site/librerobotics}
+				{http://librerobotics.github.io}  
+				}  
+	\par
+	}%
     \fi%
     \ifx\insertinstitut\@empty%
     \else%
@@ -589,7 +596,7 @@
         \vspace{1em}
         \small You are free to reuse it and modify it as much as you want as long as\\
         \small (1) you mention
-        {\href{https://github.com/severin-lemaignan/hri-beamer-theme}{Séverin Lemaignan}}
+        {\href{https://github.com/mxochicale}{Miguel Xochicale}}
          as being the original author,\\
         \small (2) you re-share your presentation under the same terms.\\
 
